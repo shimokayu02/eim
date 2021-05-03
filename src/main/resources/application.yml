@@ -1,0 +1,30 @@
+spring:
+  main:
+    banner-mode: "off"
+  jpa:
+    properties:
+      hibernate:
+        dialect: sample.autoconfiguration.dialect.CApplyJsonbType
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hosdb
+    username: hosuser
+    password: 54321
+    hikari:
+      schema: eim
+  flyway:
+    schemas: eim
+
+server:
+  port: 8080
+  servlet.context-path: /hos-web/eim
+  error:
+    whitelabel:
+      enabled: false
+
+extension:
+  security:
+    cors.enabled: true
+
+logging:
+  level:
+    org.hibernate.dialect.Dialect: "off"
