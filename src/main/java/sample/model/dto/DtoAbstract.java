@@ -7,7 +7,7 @@ import java.util.Map;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import sample.util.Checker;
+import sample.util.Validator;
 
 public abstract class DtoAbstract implements Serializable {
 
@@ -21,7 +21,7 @@ public abstract class DtoAbstract implements Serializable {
             destinationMap.put(x.getKey(), convert(x.getValue()));
         });
         reqForm = objectMapper.convertValue(destinationMap, reqForm.getClass());
-        return Checker.chkFields(reqForm);
+        return Validator.checkFields(reqForm);
     }
 
     private static Object convert(Object value) {

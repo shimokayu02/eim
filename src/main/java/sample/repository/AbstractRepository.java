@@ -2,7 +2,7 @@ package sample.repository;
 
 import javax.persistence.EntityManager;
 
-import sample.util.Checker;
+import sample.util.Validator;
 
 /**
  * AbstractRepository。
@@ -17,7 +17,7 @@ public abstract class AbstractRepository<T extends ActiveRecord> {
     public void save(T entity) {
         entity.setOperator(entity.getOperator());
         entity.setLastModifiedDatetime(entity.getLastModifiedDatetime());
-        getEntityManager().persist(Checker.chkFields(entity));
+        getEntityManager().persist(Validator.checkFields(entity));
     }
 
 }

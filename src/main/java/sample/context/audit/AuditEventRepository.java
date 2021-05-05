@@ -5,7 +5,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import sample.util.Checker;
+import sample.util.Validator;
 
 @Repository
 public class AuditEventRepository {
@@ -14,7 +14,7 @@ public class AuditEventRepository {
     private EntityManager em;
 
     public void save(AuditEvent entity) {
-        em.persist(Checker.chkFields(entity));
+        em.persist(Validator.checkFields(entity));
     }
 
 }

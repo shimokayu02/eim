@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * DateUtils。
@@ -98,4 +100,27 @@ public abstract class DateUtils {
         return months;
     }
 
+    public static class Checker {
+
+        private final static Logger LOG = LogManager.getLogger(Checker.class);
+
+        /**
+         *
+         * @param yyyyMMdd
+         * @return
+         */
+        public static boolean chkYmd(String yyyyMMdd) {
+            if (StringUtils.isEmpty(yyyyMMdd)) {
+                return false;
+            }
+            String rYmd = "^[0-9]{4}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])$";
+            String tmpYmd = yyyyMMdd.replaceAll("(?<=^.{4})|(?<=^.{6})", "-");
+            if (!yyyyMMdd.matches(rYmd) || !tmpYmd.equals(java.sql.Date.valueOf(tmpYmd).toString())) {
+                LOG.warn(String.format("input of \"%s\" as yyyyMMdd", yyyyMMdd));
+                return false;
+            }
+            return true;
+        }
+
+    }
 }
