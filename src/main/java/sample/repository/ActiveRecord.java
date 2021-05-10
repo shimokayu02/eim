@@ -1,6 +1,5 @@
 package sample.repository;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
@@ -13,11 +12,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import sample.context.security.OpUserDetails;
 import sample.util.KanaToLatin;
 
-public interface ActiveRecord extends Serializable {
+public interface ActiveRecord extends ActiveMetaRecord {
 
     void setOperator(String operator);
 
-    void setLastModifiedDatetime(Date lastModifiedDatetime);
+    void setLastModifiedDate(Date lastModifiedDate);
 
     default String getOperator() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -43,7 +42,7 @@ public interface ActiveRecord extends Serializable {
                 + KanaToLatin.convert(userDetails.getEmployee().getFirstNameKana());
     }
 
-    default Date getLastModifiedDatetime() {
+    default Date getLastModifiedDate() {
         return new Timestamp(System.currentTimeMillis());
     }
 

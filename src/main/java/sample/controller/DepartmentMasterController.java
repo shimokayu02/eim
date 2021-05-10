@@ -65,14 +65,17 @@ public class DepartmentMasterController {
 
         private String 班名; // group_name
 
-        private String 最終更新日時; // last_modified_datetime
+        private String 作成日時; // created_date
+
+        private String 最終更新日時; // last_modified_date
 
         public static DepartmentMasterCsvDTO of(DepartmentMaster entity) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             return new DepartmentMasterCsvDTO(entity.getDepartmentCode(), entity.getDepartmentName(),
                     entity.getDepartmentAuthority(),
                     entity.getSectionCode(), entity.getSectionName(),
-                    entity.getGroupCode(), entity.getGroupName(), sdf.format(entity.getLastModifiedDatetime()));
+                    entity.getGroupCode(), entity.getGroupName(),
+                    sdf.format(entity.getCreatedDate()), sdf.format(entity.getLastModifiedDate()));
         }
     }
 }

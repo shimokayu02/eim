@@ -74,11 +74,15 @@ public class DepartmentMaster implements ActiveRecord {
     @Getter(AccessLevel.NONE)
     @Size(max = 255)
     private String operator;
+    /** 作成日時 */
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_date")
+    private Date createdDate;
     /** 最終更新日時 */
     @Getter(AccessLevel.NONE)
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "last_modified_datetime")
-    private Date lastModifiedDatetime;
+    @Column(name = "last_modified_date")
+    private Date lastModifiedDate;
 
     @Override
     public int hashCode() {

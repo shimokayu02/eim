@@ -21,7 +21,8 @@ create table "eim".employee (
   , authority_type character varying(30) not null
   , status_type character varying(30) not null
   , operator character varying(255)
-  , last_modified_datetime timestamp(6) without time zone
+  , created_date timestamp(6) without time zone
+  , last_modified_date timestamp(6) without time zone
   , unique (employee_id)
   , unique (mail)
   , primary key (id)
@@ -41,7 +42,8 @@ create table "eim".department_master (
   , group_code character varying(2)
   , group_name character varying(30)
   , operator character varying(255)
-  , last_modified_datetime timestamp(6) without time zone
+  , created_date timestamp(6) without time zone
+  , last_modified_date timestamp(6) without time zone
   , unique (department_code, section_code, group_code)
   , primary key (id)
 );
