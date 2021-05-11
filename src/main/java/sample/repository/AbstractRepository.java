@@ -1,6 +1,6 @@
 package sample.repository;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.EntityManager;
@@ -12,7 +12,7 @@ import sample.util.Validator;
  *
  * @param <T> entity
  */
-public abstract class AbstractRepository<T extends ActiveMetaRecord> {
+public abstract class AbstractRepository<T extends ActiveRecord> {
     protected final String beanNameEmf = "eim_entityManagerFactory";
 
     protected abstract EntityManager getEntityManager();
@@ -20,7 +20,8 @@ public abstract class AbstractRepository<T extends ActiveMetaRecord> {
     public void save(T entity) {
         entity.setOperator(entity.getOperator());
         if (Objects.isNull(entity.getCreatedDate())) {
-            entity.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+            Date createdDate = entity.getLastModifiedDate();
+            entity.setCreatedDate(createdDate);
         }
         entity.setLastModifiedDate(entity.getLastModifiedDate());
         getEntityManager().persist(Validator.checkFields(entity));
