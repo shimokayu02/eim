@@ -53,8 +53,7 @@ public class CApplyJsonbType extends PostgreSQL95Dialect implements UserType {
     /** {@inheritDoc} */
     @Override
     public boolean equals(Object x, Object y) throws HibernateException {
-        // TODO 自動生成されたメソッド・スタブ
-        return false;
+        return Objects.equals(x, y);
     }
 
     /** {@inheritDoc} */
@@ -98,8 +97,7 @@ public class CApplyJsonbType extends PostgreSQL95Dialect implements UserType {
     /** {@inheritDoc} */
     @Override
     public Object deepCopy(Object value) throws HibernateException {
-        // TODO 自動生成されたメソッド・スタブ
-        return null;
+        return value;
     }
 
     /** {@inheritDoc} */
