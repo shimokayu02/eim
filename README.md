@@ -184,7 +184,9 @@ C:\Users\5h1m0kayu02>npm install --save core-js
 ```
 C:\Users\5h1m0kayu02>cd C:\Users\5h1m0kayu02\Documents\GitHub\eim\ui
 
-C:\Users\5h1m0kayu02\Documents\GitHub\eim\ui>dir | findstr package.json
+# ファイルが存在すること
+C:\Users\5h1m0kayu02\Documents\GitHub\eim\ui>dir /b | findstr package.json
+## package.json
 
 C:\Users\5h1m0kayu02\Documents\GitHub\eim\ui>yarn install
 ```
